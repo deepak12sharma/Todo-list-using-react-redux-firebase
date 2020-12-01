@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import React,{ Component } from 'react';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { BrowserRouter,Switch,Route} from 'react-router-dom'
+import Navbar from './Components/Layout/Navbar'
+import Dashboard from './Components/Dashboard/Dashboard'
+import ProjectDetails from './Components/Project/ProjectDetail'
+import SignIn from './Components/Auth/Signin'
+import Signout from './Components/Auth/Signout'
+import CreateProject from './Components/Project/CreateProject'
+import adminRole from './Components/Project/adminRole'
+class App extends Component
+{
+  render(){
+    return(
+      <BrowserRouter>
+      <div className="App">
+          <Navbar />
+    <Switch>
+<Route exact path='/' component={Dashboard} />
+<Route path='/project/:id' component={ProjectDetails} />
+<Route path='/SignIn' component={SignIn} />
+<Route path='/Signout' component={Signout} />
+<Route path='/CreateProject' component={CreateProject} />
+<Route path='/adminRole' component={adminRole} />
+    </Switch>
+      </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
